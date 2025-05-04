@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MENU</title>
+</head>
+<body>
+    <h1>Menu</h1>
+	<div class="container mt-5">
+		<div class="row text-center">
+			<a th:href="@{/altaCliente}" class="btn btn-seccess btn-lg"> Alta Cliente</a>
+		</div>
+	<div class="col">
+		<a th:href="@{/listaClientes}" class="btn btn-primary btn-lg">Lista Clientes</a>
+	</div>
+	<div class="col">
+		<a th:href="@{/buscar}" class="btn btn-primary btn-lg">Buscar Cliente</a>
+	</div>
+	</div>
+
+</body>
+</html>

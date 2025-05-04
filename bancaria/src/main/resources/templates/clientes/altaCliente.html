@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Alta Cliente</title>
+</head>
+<body>
+    <h1>Registro de Clientes</h1>
+    <form th:object="${alumno}" th:action="@{/guardar}" method="post">
+		<label for="id">ID</label><br>
+		       <input type="text" id="id" name="id" required th:field="*{id}"><br><br>
+        <label for="nombre">NOMBRE:</label><br>
+              <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required><br><br>
+
+        <label for="domicilio">DOMICILIO:</label><br>
+             <input type="text" id="domicilio" name="domicilio" required th:field="*{domicilio}"><br><br>
+
+        <label for="correo">CORREO ELECTRONICO</label><br>
+             <input type="text" id="correo" name="correo" required th:field="*{correoElec}"><br><br>
+		
+		<label for="user">USUARIO</label><br>
+		        <input type="text" id="user" name="user" required th:field="*{user}"><br><br>
+				
+		<label for="clave">CLAVE</label><br>
+				 <input type="text" id="clave" name="clave" required th:field="*{clave}"><br><br>
+
+        <button type="submit">Registrar</button>
+    </form>
+</body>
+</html>

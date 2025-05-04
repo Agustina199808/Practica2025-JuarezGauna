@@ -1,6 +1,6 @@
 package com.entidad.bancaria.Entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Cuentas {
 	String id;
