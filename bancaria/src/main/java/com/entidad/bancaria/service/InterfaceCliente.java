@@ -10,7 +10,7 @@ public interface InterfaceCliente {
 	
 	public void altaCliente (Model model);
 	public void guardar(Cliente cliente);
-	public void borrar(Cliente cliente);
+	public void borrar(String dni);
 	public Cliente buscar(String dni);
 	public List<Cliente>listaCli();
 

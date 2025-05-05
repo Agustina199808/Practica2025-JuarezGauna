@@ -33,8 +33,8 @@ return "cliente/listaCliente";
 }
 
 @PostMapping("/eliminarCliente")
-public String eliminarC (Cliente cliente) {
-Cli.borrar(cliente);
+public String eliminarC (String dni) {
+Cli.borrar(dni);
 return "cliente/listaCliente";
 }
 

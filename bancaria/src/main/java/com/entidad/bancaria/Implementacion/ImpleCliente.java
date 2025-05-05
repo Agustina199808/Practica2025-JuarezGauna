@@ -24,8 +24,14 @@ public class ImpleCliente implements InterfaceCliente{
     }
 
 	@Override
-	public void borrar(Cliente cliente) {
-		listaC.remove(cliente);
+	public void borrar(String dni) {
+		for(Cliente lista:listaC) {
+		if(dni.equalsIgnoreCase(lista.getDni())){
+			listaC.remove(lista);
+			break;
+		}
+		}
+		
 		
 	}
 
