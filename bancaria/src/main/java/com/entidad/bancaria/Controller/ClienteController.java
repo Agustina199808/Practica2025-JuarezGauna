@@ -15,34 +15,34 @@ public class ClienteController {
 
 ImpleCliente Cli = new ImpleCliente();
 
-@GetMapping("/menu")
+@GetMapping("/menuClientes")
 public String menu () {
-return "cliente/menuClientes";
+return "clientes/menuClientes";
 }
 
 @GetMapping("/altaCliente")
 public String altaCliente (Model model) {
 Cli.altaCliente(model);
-return "cliente/altaCliente";
+return "clientes/altaCliente";
 }
 
 @PostMapping("/guardar")
 public String guardar(Cliente cliente) {
 	Cli.guardar(cliente);
-return "cliente/listaCliente";
+return "clientes/listaCliente";
 }
 
 @PostMapping("/eliminarCliente")
 public String eliminarC (String dni) {
 Cli.borrar(dni);
-return "cliente/listaCliente";
+return "clientes/listaCliente";
 }
 
 @GetMapping("/listaClientes")
 public String lista (Model model) {
 	List<Cliente> listaC =Cli.listaCli();
 	model.addAttribute("listaC", listaC);
-return "cliente/listaCliente";
+return "clientes/listaCliente";
 }
 	
 }
