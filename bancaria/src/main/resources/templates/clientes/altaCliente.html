@@ -23,6 +23,14 @@
 				
 		<label for="clave">CLAVE</label><br>
 				 <input type="text" id="clave" name="clave" required th:field="*{clave}"><br><br>
+				  
+				 <div>
+				     <label for="estado">ESTADO</label>
+				     <select id="estado" name="estado">
+				         <option value="true" th:field="*{estado}">Habilitado</option>
+				         <option value="false" th:field="*{estado}">Inabilitado</option>
+				     </select>
+				 </div>
 
         <button type="submit">Registrar</button>
     </form>

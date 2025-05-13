@@ -3,11 +3,12 @@ package com.entidad.bancaria.Implementacion;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.entidad.bancaria.Entity.Cliente;
 import com.entidad.bancaria.service.InterfaceCliente;
-
+@Service
 public class ImpleCliente implements InterfaceCliente{
 	List<Cliente> listaC = new ArrayList<>();
 
@@ -24,14 +25,13 @@ public class ImpleCliente implements InterfaceCliente{
     }
 
 	@Override
-	public void borrar(String dni) {
-		for(Cliente lista:listaC) {
-		if(dni.equalsIgnoreCase(lista.getDni())){
-			listaC.remove(lista);
+	public void borrar(int id) {
+		for(int i=0; i<listaC.size(); i++) {
+		   if(listaC.get(i).getId()==id){
+			listaC.remove(i);
 			break;
 		}
 		}
-		
 		
 	}
 
@@ -48,6 +48,16 @@ public class ImpleCliente implements InterfaceCliente{
 	@Override
 	public List<Cliente> listaCli() {
 		return listaC;
+	}
+
+	@Override
+	public void actualizar(Cliente clienteAct) {
+		for(int i=0; i<listaC.size(); i++) {
+			   if(listaC.get(i).getDni().equalsIgnoreCase(clienteAct.getDni())){
+				   listaC.set(i, clienteAct);
+				break;
+		       }
+		}
 	}
 
 }
