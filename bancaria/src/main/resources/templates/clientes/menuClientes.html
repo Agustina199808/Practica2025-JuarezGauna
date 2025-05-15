@@ -3,20 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>MENU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .menu-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 30px;
+			font-family: fantasy;
+        }
+        .btn-menu {
+            margin: 10px 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Menu</h1>
-	<div class="container mt-5">
-		<div class="row text-center">
-			<a th:href="@{/altaCliente}" class="btn btn-seccess btn-lg"> Alta Cliente</a>
-		</div>
-	<div class="col">
-		<a th:href="@{/listaClientes}" class="btn btn-primary btn-lg">Lista Clientes</a>
-	</div>
-	<div class="col">
-		<a th:href="@{/buscar}" class="btn btn-primary btn-lg">Buscar Cliente</a>
-	</div>
-	</div>
-
+    <div class="container menu-container text-center">
+        <h1 class="text-dark">MENU PRINCIPAL</h1>
+        <a th:href="@{/altaCliente}" class="btn btn-success btn-menu">
+			<i class="fa-solid fa-user-plus"></i> Alta Cliente</a>
+			
+        <a th:href="@{/listaClientes}" class="btn btn-primary btn-menu">
+			<i class="fa-solid fa-list"></i> Lista de Clientes</a>
+				
+        <a th:href="@{/formularioBuscar}" class="btn btn-info btn-menu">
+			<i class="fa-solid fa-magnifying-glass"></i> Buscar Cliente </a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

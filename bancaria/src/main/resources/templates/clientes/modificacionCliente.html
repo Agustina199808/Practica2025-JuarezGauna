@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario de Alta Cliente</title>
+    <title>Formulario de Modificación Cliente</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
         }
 
         h1 {
-            color: green;
+            color: #333;
             text-align: center;
         }
 
@@ -44,7 +44,7 @@
         button {
             margin-top: 20px;
             padding: 12px 20px;
-            background-color:darkgreen;
+            background-color: #28a745;
             color: white;
             border: none;
             border-radius: 4px;
@@ -54,24 +54,26 @@
         }
 
         button:hover {
-            background-color:green;
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
 
-    <h1 class="text-succes" style="font-family: fantasy;">REGISTRO DE CLIENTES</h1>
+    <h1>Modificación de Clientes</h1>
 
-    <form th:object="${cliente}" th:action="@{/guardar}" method="post">
-
+    <form th:object="${cliente}" th:action="@{/actualizar/{dni}(dni=${cliente.dni})}" method="post">
+		<label for="id">ID</label>
+		<input type="text" id="id" name="id" th:field="*{id}" readonly>
+		
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required>
 		
 		<label for="apellido">Apellido</label>
 		<input type="text" id="apellido" name="nombre" th:field="*{apellido}" required>
-
-        <label for="dni">DNI</label>
-        <input type="text" id="dni" name="dni" th:field="*{dni}" required>
+		
+		<label for="dni">DNI</label>
+		<input type="text" id="dni" name="dni" th:field="*{dni}" readonly>
 
         <label for="domicilio">Domicilio</label>
         <input type="text" id="domicilio" name="domicilio" required th:field="*{domicilio}">
@@ -91,7 +93,7 @@
             <option value="false">Inhabilitado</option>
         </select>
 
-        <button type="submit">Registrar</button>
+        <button type="submit">Modificar</button>
     </form>
 
 </body>

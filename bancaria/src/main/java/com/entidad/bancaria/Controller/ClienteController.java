@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.entidad.bancaria.Entity.Cliente;
 import com.entidad.bancaria.service.InterfaceCliente;
@@ -44,18 +45,31 @@ public String lista (Model model) {
 model.addAttribute("cliente", Cli.listaCli());
 return "clientes/listaClientes";
 }
-@PostMapping("/actualizar")
-public String actualizarCliente(Cliente cliente) {
-	Cli.actualizar(cliente);
-	return "redirect:/listaClientes";
+
+@GetMapping("/modificar/{dni}")
+public String mostrarFormularioEdicion(@PathVariable String dni, Model model) {
+    Cliente cliente = Cli.buscar(dni);
+    model.addAttribute("cliente", cliente);
+    return "clientes/modificacionCliente";
 }
-@GetMapping("buscar/{dn}")
-public String buscarCli (@PathVariable("dni") String dniCli, Model model) {
-	System.out.println("PathVariable:"+ dniCli);
+
+@PostMapping("/actualizar/{dni}")
+public String actualizarCliente(@PathVariable String dni, Cliente cliente) {
+    Cli.actualizar(cliente);
+    return "redirect:/listaClientes";
+}
+
+@GetMapping("/formularioBuscar")
+public String mostrarForm() {
+    return "clientes/buscar";
+}
+
+@GetMapping("/buscar")
+public String buscarCli(@RequestParam("dni") String dniCli, Model model) {
+	System.out.println("RequestParam DNI:"+ dniCli);
 	Cliente encontrado= Cli.buscar(dniCli);
 	model.addAttribute("cliente", encontrado);
-	return "MostrarCliente";
-	
+	return "clientes/resultCliente";	
 }
 	
 }

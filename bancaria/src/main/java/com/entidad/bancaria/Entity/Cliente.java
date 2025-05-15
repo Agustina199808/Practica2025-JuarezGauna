@@ -1,14 +1,15 @@
 package com.entidad.bancaria.Entity;
 
 public class Cliente {
-	int id;
-	String dni;
-	String user;
-	String clave;
-	String nombre;
-	String domicilio;
-	String correoElec;
-	Boolean estado;
+	private int id;
+	private String dni;
+	private String user;
+	private String clave;
+	private String nombre;
+	private String apellido;
+	private String domicilio;
+	private String correoElec;
+	private Boolean estado;
 	
 	
 	public Cliente() {
@@ -16,7 +17,7 @@ public class Cliente {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Cliente(int id, String dni, String user, String clave, String nombre, String domicilio, String correoElec,
+	public Cliente(int id, String dni, String user, String clave, String nombre, String apellido, String domicilio, String correoElec,
 			Boolean estado) {
 		super();
 		this.id = id;
@@ -24,6 +25,7 @@ public class Cliente {
 		this.user = user;
 		this.clave = clave;
 		this.nombre = nombre;
+		this.apellido=apellido;
 		this.domicilio = domicilio;
 		this.correoElec = correoElec;
 		this.estado = estado;
@@ -58,6 +60,13 @@ public class Cliente {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 	public String getDomicilio() {
 		return domicilio;

@@ -11,18 +11,19 @@ import com.entidad.bancaria.service.InterfaceCliente;
 @Service
 public class ImpleCliente implements InterfaceCliente{
 	List<Cliente> listaC = new ArrayList<>();
+	int id=1;
 
 	@Override
 	public void altaCliente (Model model) {
     Cliente cliente= new Cliente();
     model.addAttribute("cliente", cliente);
-		
 	}
 
 	@Override
 	public void guardar(Cliente cliente) {
-		listaC.add(cliente);
-    }
+		cliente.setId(id++);
+	    listaC.add(cliente);
+	}
 
 	@Override
 	public void borrar(int id) {
