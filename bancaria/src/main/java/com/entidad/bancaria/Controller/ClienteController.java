@@ -34,10 +34,10 @@ public String guardar(Cliente cliente) {
 return "redirect:/listaClientes";
 }
 
-@PostMapping("/eliminarCliente")
-public String eliminarC (int id) {
-Cli.borrar(id);
-return "redirect:/listaClientes";
+@GetMapping("/eliminar/{id}")
+public String EliminarCliente(@PathVariable int id) {
+	Cli.borrar(id);
+	return "redirect:/listaClientes";
 }
 
 @GetMapping("/listaClientes")

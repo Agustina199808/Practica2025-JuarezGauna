@@ -1,17 +1,20 @@
 package com.entidad.bancaria.Implementacion;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.entidad.bancaria.Entity.Cliente;
+import com.entidad.bancaria.model.repository.ClienteRepository;
 import com.entidad.bancaria.service.InterfaceCliente;
 @Service
+
 public class ImpleCliente implements InterfaceCliente{
-	List<Cliente> listaC = new ArrayList<>();
-	int id=1;
+	@Autowired
+	ClienteRepository cli;
 
 	@Override
 	public void altaCliente (Model model) {
@@ -21,44 +24,30 @@ public class ImpleCliente implements InterfaceCliente{
 
 	@Override
 	public void guardar(Cliente cliente) {
-		cliente.setId(id++);
-	    listaC.add(cliente);
+	    cli.save(cliente);
 	}
 
 	@Override
 	public void borrar(int id) {
-		for(int i=0; i<listaC.size(); i++) {
-		   if(listaC.get(i).getId()==id){
-			listaC.remove(i);
-			break;
-		}
+		if(cli.existsById(id)) {
+			cli.deleteById(id);
 		}
 		
 	}
 
 	@Override
 	public Cliente buscar(String dni) {
-		for(Cliente lista: listaC) {
-			if(dni.equalsIgnoreCase(lista.getDni())) {
-				return lista;
-			}
-		}
-		return null;
+		return cli.findByDni(dni);
 	}
 
 	@Override
 	public List<Cliente> listaCli() {
-		return listaC;
+		return cli.findAll();
 	}
 
 	@Override
 	public void actualizar(Cliente clienteAct) {
-		for(int i=0; i<listaC.size(); i++) {
-			   if(listaC.get(i).getDni().equalsIgnoreCase(clienteAct.getDni())){
-				   listaC.set(i, clienteAct);
-				break;
-		       }
-		}
+	   cli.save(clienteAct);
 	}
 
 }

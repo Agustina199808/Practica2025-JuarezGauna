@@ -1,6 +1,15 @@
 package com.entidad.bancaria.Entity;
+import java.util.Set;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+@Entity
 public class Cliente {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String dni;
 	private String user;
@@ -11,26 +20,29 @@ public class Cliente {
 	private String correoElec;
 	private Boolean estado;
 	
+	@OneToMany(mappedBy = "cliente")
+	private Set<Cuenta>cuentas;
 	
 	public Cliente() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Cliente(int id, String dni, String user, String clave, String nombre, String apellido, String domicilio, String correoElec,
-			Boolean estado) {
+	public Cliente(int id, String dni, String user, String clave, String nombre, String apellido, String domicilio,
+			String correoElec, Boolean estado, Set<Cuenta> cuentas) {
 		super();
 		this.id = id;
 		this.dni = dni;
 		this.user = user;
 		this.clave = clave;
 		this.nombre = nombre;
-		this.apellido=apellido;
+		this.apellido = apellido;
 		this.domicilio = domicilio;
 		this.correoElec = correoElec;
 		this.estado = estado;
+		this.cuentas = cuentas;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -64,7 +76,6 @@ public class Cliente {
 	public String getApellido() {
 		return apellido;
 	}
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
@@ -86,6 +97,12 @@ public class Cliente {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
+	public Set<Cuenta> getCuentas() {
+		return cuentas;
+	}
+	public void setCuentas(Set<Cuenta> cuentas) {
+		this.cuentas = cuentas;
+	}
 	
-
+	
 }

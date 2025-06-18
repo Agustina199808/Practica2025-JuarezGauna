@@ -26,6 +26,8 @@
                             <th>Correo</th>
                             <th>Estado</th>
                             <th>Eliminar/Modificar</th>
+							<th>Crear cuenta</th>
+							<th>Extraer/Depositar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,14 +40,24 @@
                             <td th:text="${cliente.correoElec}"></td>
                             <td th:text="${cliente.estado}"></td>
 							<td>
-							<form th:action="@{/eliminarCliente}" method="post" style="display:inline;">
-							     <input type="hidden" name="id" th:value="${cliente.id}" />
-							     <button type="submit" class="btn btn-danger btn-sm">
-							     <i class="fa-solid fa-trash"></i>
-							     </button>
-							</form>
+						    <a th:href="@{/eliminar/{id}(id=${cliente.id})}" class="btn btn-danger btn-sm">
+							   <i class="fa-solid fa-trash"></i>
+						    </a>
 							<a th:href="@{/modificar/{dni}(dni=${cliente.dni})}" class="btn btn-warning btn-sm">
-							<i class="fa-solid fa-pen-to-square"></i>
+							  <i class="fa-solid fa-pen-to-square"></i>
+							</a>
+							</td>
+							<td>
+							<a th:href="@{/altaCuenta/{dni}(dni=${cliente.dni})}" class="btn btn-warning btn-sm">
+							  <i class="fa-solid fa-pen-to-square"></i>
+							</a>
+							</td>
+							<td>
+							<a th:href="@{/altaCuenta/{dni}(dni=${cliente.dni})}" class="btn btn-warning btn-sm">
+							  <i class="fa-solid fa-pen-to-square"></i>
+							</a>
+							<a th:href="@{/altaCuenta/{dni}(dni=${cliente.dni})}" class="btn btn-warning btn-sm">
+							  <i class="fa-solid fa-pen-to-square"></i>
 							</a>
 							</td>
                         </tr>
@@ -53,7 +65,7 @@
                 </table>
             </div>
         </div>
-        <div class="alert alert-danger text-center" role="alert" th:if="${cliente == null}">
+        <div class="alert alert-danger text-center" role="alert" th:unless="${cliente != null}">
             Cliente no encontrado.
         </div>
     </div>

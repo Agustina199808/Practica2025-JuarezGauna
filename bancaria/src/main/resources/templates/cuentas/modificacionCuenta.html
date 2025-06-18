@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Modificación Cliente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Modificación de Cuenta</h1>
+
+    <form th:object="${cuenta}" th:action="@{/actualizarCuenta/{id}(id=${cuenta.id})}" method="post">
+		<label for="id">ID Cuenta</label>
+		<input type="text" id="id" name="id" th:field="*{id}" readonly>
+		
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" th:field="*{cuenta.cliente.nombre}" readonly>
+		
+		<label for="apellido">Apellido</label>
+		<input type="text" id="apellido" name="nombre" th:field="*{cuenta.cliente.apellido}" readonly>
+		
+		<label for="dni">DNI</label>
+		<input type="text" id="dni" name="dni" th:field="*{cuenta.cliente.dni}" readonly>
+
+        <label for="saldo">Saldo Actual</label>
+        <input type="text" id="saldo" name="saldo" required th:field="*{cuenta.saldo}" readonly>
+
+        <label for="limite">Limite extraccion</label>
+        <input type="text" id="limite" name="limite" required th:field="*{cuenta.limiteExtraccion}" required>
+
+        <label for="estado">Estado</label>
+        <select id="estado" name="estado" th:field="*{estado}">
+            <option value="true">Habilitado</option>
+            <option value="false">Inhabilitado</option>
+        </select>
+
+        <button type="submit">Modificar</button>
+    </form>
+
+</body>
+</html>

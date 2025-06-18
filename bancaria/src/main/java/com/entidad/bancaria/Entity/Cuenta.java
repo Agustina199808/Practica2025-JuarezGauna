@@ -3,25 +3,42 @@ package com.entidad.bancaria.Entity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+@Entity
 public class Cuenta {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int numeroCuenta;
-	private String cliente;
 	private Date fechaIngreso;
 	private double saldoActual;
 	private Boolean estado;
 	private double limiteExtraccion;
 	
-	List<Movimiento> listaMov= new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name="id_cliente")
+	private Cliente cliente;
+	
+	@OneToMany(mappedBy = "cuenta")
+	private Set<Movimiento> listaMov;
+	
+	
 
 	public Cuenta() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cuenta(int id, int numeroCuenta, String cliente, Date fechaIngreso, double saldoActual, Boolean estado,
-			double limiteExtraccion, List<Movimiento> listaMov) {
+	public Cuenta(int id, int numeroCuenta, Cliente cliente, Date fechaIngreso, double saldoActual, Boolean estado,
+			double limiteExtraccion, Set<Movimiento> listaMov) {
 		super();
 		this.id = id;
 		this.numeroCuenta = numeroCuenta;
@@ -49,11 +66,11 @@ public class Cuenta {
 		this.numeroCuenta = numeroCuenta;
 	}
 
-	public String getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(String cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
@@ -89,11 +106,11 @@ public class Cuenta {
 		this.limiteExtraccion = limiteExtraccion;
 	}
 
-	public List<Movimiento> getListaMov() {
+	public Set<Movimiento> getListaMov() {
 		return listaMov;
 	}
 
-	public void setListaMov(List<Movimiento> listaMov) {
+	public void setListaMov(Set<Movimiento> listaMov) {
 		this.listaMov = listaMov;
 	}
 	

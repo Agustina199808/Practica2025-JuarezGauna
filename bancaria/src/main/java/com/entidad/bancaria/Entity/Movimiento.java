@@ -2,12 +2,23 @@ package com.entidad.bancaria.Entity;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+@Entity
 public class Movimiento {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date fecha;
 	private double importe;
 	private String tipoOp;
+	
+	@ManyToOne
+	@JoinColumn(name="id_cuenta")
 	private Cuenta cuenta;
 	
 	

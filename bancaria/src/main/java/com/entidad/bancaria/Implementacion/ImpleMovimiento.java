@@ -1,5 +1,9 @@
 package com.entidad.bancaria.Implementacion;
 
-public class ImpleMovimiento {
+import org.springframework.stereotype.Service;
+
+import com.entidad.bancaria.service.InterfaceMovimiento;
+@Service
+public class ImpleMovimiento implements InterfaceMovimiento {
 
 }
